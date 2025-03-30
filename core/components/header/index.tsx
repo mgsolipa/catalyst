@@ -119,7 +119,7 @@ const getCurrencies = async () => {
   return currencies;
 };
 
-export const Header = async () => {
+export const Header = async ({ country }: { country: string }) => {
   const t = await getTranslations('Components.Header');
   const locale = await getLocale();
   const currencyCode = await getPreferredCurrencyCode();
@@ -135,6 +135,7 @@ export const Header = async () => {
 
   return (
     <HeaderSection
+      country={country}
       navigation={{
         accountHref: '/login',
         accountLabel: t('Icons.account'),

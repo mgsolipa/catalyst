@@ -9,10 +9,11 @@ import { Navigation } from '@/vibes/soul/primitives/navigation';
 interface Props {
   navigation: React.ComponentPropsWithoutRef<typeof Navigation>;
   banner?: React.ComponentPropsWithoutRef<typeof Banner>;
+  country?: string;
 }
 
 export const HeaderSection = forwardRef<React.ComponentRef<'div'>, Props>(
-  ({ navigation, banner }, ref) => {
+  ({ navigation, banner, country }, ref) => {
     const [bannerElement, setBannerElement] = useState<HTMLElement | null>(null);
     const [bannerHeight, setBannerHeight] = useState(0);
     const [isFloating, setIsFloating] = useState(false);
@@ -44,6 +45,11 @@ export const HeaderSection = forwardRef<React.ComponentRef<'div'>, Props>(
         >
           <div className="p-2">
             <Navigation {...navigation} isFloating={isFloating} />
+            {country && (
+              <div className="mt-2 text-sm text-center text-muted-foreground">
+                🌍 Estás navegando desde: <strong>{country}</strong>
+              </div>
+            )}
           </div>
         </Headroom>
       </div>

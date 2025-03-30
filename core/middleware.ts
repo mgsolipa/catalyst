@@ -1,10 +1,11 @@
 import { composeMiddlewares } from './middlewares/compose-middlewares';
+import { withGeoip } from './middlewares/with-geoip';
 import { withAuth } from './middlewares/with-auth';
 import { withChannelId } from './middlewares/with-channel-id';
 import { withIntl } from './middlewares/with-intl';
 import { withRoutes } from './middlewares/with-routes';
 
-export const middleware = composeMiddlewares(withAuth, withIntl, withChannelId, withRoutes);
+export const middleware = composeMiddlewares(withGeoip, withAuth, withIntl, withChannelId, withRoutes);
 
 export const config = {
   matcher: [
